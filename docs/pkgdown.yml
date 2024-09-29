@@ -1,0 +1,7 @@
+pandoc: 3.1.1
+pkgdown: 2.0.6
+pkgdown_sha: ~
+articles:
+  EMixed: EMixed.html
+last_built: 2024-09-29T04:00Z
+

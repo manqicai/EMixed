@@ -1,0 +1,50 @@
+---
+title: "EMixed"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{EMixed}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+## Installation
+
+You can install the most recent updates of scMD from github with:
+
+```{r setup, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+# install devtools if necessary
+if (!"devtools" %in% rownames(installed.packages())) {
+  install.packages('devtools')
+}
+
+# install the EMixed package
+if (!"EMixed" %in% rownames(installed.packages())) {
+  devtools::install_github('manqicai/EMixed')
+}
+
+
+# load
+library(EMixed)
+```
+
+## EMixed Example: Artificial data
+
+In this section, we've created pseudo paired RNA and DNAm data used for illustration. 
+```{r message=FALSE, warning=FALSE}
+# Estimate multi-omics deconvolution
+data('ref_DNAm')
+data('ref_RNA')
+data('bulk_DNAm')
+data('bulk_RNA')
+library(preprocessCore)
+EMixed_result = EMixed(bulk_RNA, ref_RNA, bulk_DNAm, ref_DNAm, parallel = FALSE)
+print(EMixed_result$EMixed_multi)
+
+```
